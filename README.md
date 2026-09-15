@@ -1,11 +1,11 @@
-# zsh.nix
+# zsh-flake
 
 ## Disclaimer
 
 ⚠️ **This is a personal hobby project** developed in spare time.
 
 - The API surface is **unstable** and may change without notice
-- **Pin a revision** in your flake if you depend on zsh.nix
+- **Pin a revision** in your flake if you depend on zsh-flake
 - Built with **AI assistance**
 - No support commitment or warranty
 

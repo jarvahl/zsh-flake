@@ -4,7 +4,7 @@ let
   flakeConfig = config;
 
   adapterModule = { lib, ... }: {
-    options.enable = lib.mkEnableOption "zsh.nix integration";
+    options.enable = lib.mkEnableOption "zsh-flake integration";
   };
 in
 {
@@ -15,10 +15,10 @@ in
     , ...
     }:
     let
-      cfg = config.integrations.zsh-nix;
+      cfg = config.rum.programs.zsh.flake;
     in
     {
-      options.integrations.zsh-nix = lib.mkOption {
+      options.rum.programs.zsh.flake = lib.mkOption {
         type = lib.types.submoduleWith {
           modules = flakeConfig.zsh.modules ++ [ adapterModule ];
           specialArgs = {
@@ -28,7 +28,7 @@ in
           };
         };
         default = { };
-        description = "zsh.nix configuration rendered into hjem-rum zsh initConfig.";
+        description = "zsh-flake configuration rendered into hjem-rum zsh initConfig.";
       };
 
       config = lib.mkIf cfg.enable {

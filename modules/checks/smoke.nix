@@ -58,7 +58,7 @@
             };
           })
           {
-            integrations.zsh-nix = {
+            rum.programs.zsh.flake = {
               enable = true;
               integrations.git.enable = true;
               aliases.ll = "ls -l";
@@ -138,7 +138,7 @@
         initConfig=${pkgs.writeText "hjem-zsh-init" hjemIntegration.config.rum.programs.zsh.initConfig}
 
         ${lib.optionalString (!hjemIntegration.config.rum.programs.zsh.enable) ''
-          echo "expected integrations.zsh-nix.enable to enable rum.programs.zsh by default"
+          echo "expected rum.programs.zsh.flake.enable to enable rum.programs.zsh by default"
           exit 1
         ''}
 
