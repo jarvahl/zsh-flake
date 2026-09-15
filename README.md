@@ -24,13 +24,6 @@
 
   history.integrations.fzf.enable = true;
 
-  integrations = {
-    git.enable = true;
-    docker.enable = true;
-    npm.enable = true;
-    mvn.enable = true;
-  };
-
   aliases = {
     ll = "ls -l";
     gs = "git status";

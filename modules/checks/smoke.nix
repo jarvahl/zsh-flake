@@ -22,13 +22,6 @@
 
             history.integrations.fzf.enable = true;
 
-            integrations = {
-              git.enable = true;
-              docker.enable = true;
-              npm.enable = true;
-              mvn.enable = true;
-            };
-
             aliases = {
               ll = "ls -l";
               gs = "git status";
@@ -60,7 +53,6 @@
           {
             rum.programs.zsh.flake = {
               enable = true;
-              integrations.git.enable = true;
               aliases.ll = "ls -l";
             };
 
@@ -102,12 +94,6 @@
         grep -q 'zsh-patina activate' "$zshrc"
         grep -q 'fzf-tab.plugin.zsh' "$zshrc"
         grep -q 'zsh-fzf-history-search.plugin.zsh' "$zshrc"
-        grep -q 'plugins/git/git.plugin.zsh' "$zshrc"
-        grep -q 'plugins/docker/docker.plugin.zsh' "$zshrc"
-        grep -q 'plugins/docker-compose/docker-compose.plugin.zsh' "$zshrc"
-        grep -q 'plugins/npm/npm.plugin.zsh' "$zshrc"
-        grep -q 'plugins/mvn/mvn.plugin.zsh' "$zshrc"
-
         line() {
           grep -n "$1" "$zshrc" | head -n1 | cut -d: -f1
         }
@@ -115,12 +101,6 @@
         test "$(line 'zsh-vi-mode.plugin.zsh')" -lt "$(line 'zsh-autosuggestions.zsh')"
         test "$(line 'zsh-autosuggestions.zsh')" -lt "$(line 'zsh-patina activate')"
         test "$(line 'fzf-tab.plugin.zsh')" -lt "$(line 'zsh-fzf-history-search.plugin.zsh')"
-        test "$(line 'zsh-fzf-history-search.plugin.zsh')" -lt "$(line 'plugins/git/git.plugin.zsh')"
-        test "$(line 'plugins/git/git.plugin.zsh')" -lt "$(line 'plugins/docker/docker.plugin.zsh')"
-        test "$(line 'plugins/docker/docker.plugin.zsh')" -lt "$(line 'plugins/docker-compose/docker-compose.plugin.zsh')"
-        test "$(line 'plugins/docker-compose/docker-compose.plugin.zsh')" -lt "$(line 'plugins/npm/npm.plugin.zsh')"
-        test "$(line 'plugins/npm/npm.plugin.zsh')" -lt "$(line 'plugins/mvn/mvn.plugin.zsh')"
-
         touch $out
       '';
 
@@ -143,7 +123,6 @@
         ''}
 
         grep -q "^alias ll='ls -l'$" "$initConfig"
-        grep -q 'plugins/git/git.plugin.zsh' "$initConfig"
         grep -q 'echo after' "$initConfig"
 
         line() {
